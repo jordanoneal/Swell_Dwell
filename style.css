@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('/images/shoreline.jpg');
+    background-size: cover;
+}
+
+.header {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: #fff;
+    display: inline-block;
+}
+
+.title {
+    font-family: 'Tangerine', serif;
+    font-size: 90px;
+    letter-spacing: 10px;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+.subtitle {
+    font-family: 'Roboto', serif;
+    font-size: 22px;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#map {
+    height: 500px;
+    width: 50%;
+    border-radius: 4px;
+}
+
+.weather-container {
+    display: flex;
+    overflow: auto;
+}
+
+.results-container {
+    min-width: 300px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.results-list {
+    color: #fff;
+    font-family: 'Roboto', serif;
+    font-size: 16px;
+    list-style: none;
+    text-align: center;
+}
+
+.results-header {
+    font-size: 18px;
+}
