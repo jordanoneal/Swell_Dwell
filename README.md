@@ -1,6 +1,6 @@
 # Swell Dwell
 
-Client-side app that integrates data received from Google Maps and Storm Glass to generate a surf forcast for the next 24 hours.
+A client-side application that combines data from Google Maps and Storm Glass to produce a 24-hour surf forecast.
 
 ## Authors
 
