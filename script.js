@@ -3,7 +3,7 @@ const STORM_GLASS_API_KEY = '4470429a-793b-11ea-98e7-0242ac130002-4470434e-793b-
 let map;
 
 function initMap() {
-    const myLatLng = { lat: -34.397, lng: 150.644 };
+    const myLatLng = { lat: -4.740360, lng: 55.517000 };
     map = new google.maps.Map(document.getElementById("map"), {
         center: myLatLng,
         zoom: 10,
@@ -47,20 +47,20 @@ function initMap() {
         })
         marker.setMap(map);
 
-        const weatherData = await RetrieveWeatherData(latLng.lat, latLng.lng);
+        const weatherData = await retrieveWeatherData(latLng.lat, latLng.lng);
         await buildResultsTable(weatherData);
 
         marker.addListener('click', async () => {
             const markerLat = marker.getPosition().lat();
             const markerLng = marker.getPosition().lng();
 
-            const weatherData = await RetrieveWeatherData(markerLat, markerLng);
+            const weatherData = await retrieveWeatherData(markerLat, markerLng);
             await buildResultsTable(weatherData);
         })
     });
 }
 
-async function RetrieveWeatherData(lat, lng) {
+async function retrieveWeatherData(lat, lng) {
     try {
         const params = ['waterTemperature', 'windSpeed', 'windDirection', 'waveHeight', 'wavePeriod', 'waveDirection', 'swellHeight', 'swellPeriod', 'swellDirection']
         const response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
@@ -91,19 +91,19 @@ async function buildResultsTable(weatherData) {
                     <li>${hour}</li>                
                 </div>
                 <div class='results-body'>
-                    <li>Water Temp: ${waterTemperature.noaa} °C</li>
-                    <li>Wind Speed: ${windSpeed.noaa} m/s</li>
-                    <li>Wind Direction: ${windDirection.noaa}°</li>
-                    <li>Wave Height: ${waveHeight.noaa}m</li>
-                    <li>Wave Period: ${wavePeriod.noaa}s</li>
-                    <li>Wave Direction: ${waveDirection.noaa}°</li>
-                    <li>Primary Swell Height: ${swellHeight.noaa}m</li>
-                    <li>Primary Swell Period: ${swellPeriod.noaa}s</li>
-                    <li>Primary Swell direction: ${swellDirection.noaa}°</li>
+                    <li class='results-item'>Water Temp: ${waterTemperature.noaa} °C</li>
+                    <li class='results-item'>Wind Speed: ${windSpeed.noaa} m/s</li>
+                    <li class='results-item'>Wind Direction: ${windDirection.noaa}°</li>
+                    <li class='results-item'>Wave Height: ${waveHeight.noaa}m</li>
+                    <li class='results-item'>Wave Period: ${wavePeriod.noaa}s</li>
+                    <li class='results-item'>Wave Direction: ${waveDirection.noaa}°</li>
+                    <li class='results-item'>Primary Swell Height: ${swellHeight.noaa}m</li>
+                    <li class='results-item'>Primary Swell Period: ${swellPeriod.noaa}s</li>
+                    <li class='results-item'>Primary Swell direction: ${swellDirection.noaa}°</li>
                 </div>
             </ul>
         </div>`
-    })
+    }).join('');
 }
 
 window.initMap = initMap;
